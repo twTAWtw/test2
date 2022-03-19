@@ -1,0 +1,22 @@
+devices:
+  jumphost:
+    os: linux
+    type: linux
+    connections:
+      cli:
+        command: ssh vlab-vpn
+  cx-iosxr:
+    os: 'iosxr'
+    type: 'router'
+    credentials:
+        default:
+            username: vradmin
+            password: cisco1234
+    connections:
+      cli:
+        protocol: ssh
+        ip: 172.17.0.9
+        proxy: jumphost
+        arguments:
+            init_exec_commands: ['terminal length 0']
+            init_config_commands: []
